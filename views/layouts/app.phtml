@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Forumedia Test</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Forumedia Test</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="nav collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto ">
+        <?php
+            if (!isset($data['client']) || $data['client'] === '') : ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="" data-toggle="modal" data-target="#loginModal">Войти</span></a>
+                </li>
+            <?php else: ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/clients/cabinet">Личный кабинет</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/clients/logout">Выйти</span></a>
+                </li>
+            <?php endif; ?>
+
+        </ul>
+    </div>
+</nav>
+<main>
+    <div class="container">
+        <?php echo $content ?>
+    </div>
+</main>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Вход в систему</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="inputLogin">Ваш логин</label>
+                        <input type="text" class="form-control" name="login" id="inputLogin" onfocus="removeAlert()"
+                               aria-describedby="loginHelp" placeholder="Введите логин" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Пароль</label>
+                        <input type="password" class="form-control" name="password" onfocus="removeAlert()"
+                               id="inputPassword"
+                               placeholder="Введите пароль" required>
+                    </div>
+                    <div class="mb-2">
+                        <small>Нет аккаунта? <a href="/clients/register">Зарегистрироваться</a></small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/jquery-3.2.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/imask.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

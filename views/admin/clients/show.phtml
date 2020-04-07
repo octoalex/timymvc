@@ -1,0 +1,49 @@
+<div class="row mb-3">
+    <a class="btn btn-outline-info d-block" href="/dashboard/clients/edit/<?php echo $client['id'] ?>">Редактировать</a>
+</div>
+<div>
+    <div class="form-group">
+        <label for="loginShow">Логин</label>
+        <input type="text" class="form-control" id="loginShow" disabled value="<?php echo $client['login'] ?>">
+    </div>
+    <div class="form-group">
+        <label for="passwordShow">Пароль</label>
+        <input type="password" class="form-control" id="passwordShow" disabled
+               value="<?php echo $client['password'] ?>">
+    </div>
+    <div class="form-group">
+        <label for="emailShow">Email</label>
+        <input type="email" class="form-control" id="emailShow" disabled value="<?php echo $client['email'] ?>">
+    </div>
+    <div class="form-group">
+        <label for="nameShow">Имя пользователя</label>
+        <input type="text" class="form-control" id="nameShow" disabled value="<?php echo $client['name'] ?>">
+    </div>
+    <div class="form-group">
+        <label for="surnameShow">Фамилия пользователя</label>
+        <input type="text" class="form-control" id="surnameShow" disabled value="<?php echo $client['surname'] ?>">
+    </div>
+    <div class="form-group">
+        <label for="phoneShow">Телефон</label>
+        <input type="text" class="form-control" id="phoneShow" disabled value="<?php echo $client['phone'] ?>">
+    </div>
+    <div class="form-group">
+        <label>Фотография</label>
+        <div>
+            <img src="/repository/photos/<?php echo $client['image'] ?>" alt="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="addressShow">Адрес</label>
+        <input type="text" class="form-control" id="addressShow" disabled value="<?php echo $client['address'] ?>">
+    </div>
+    <div class="form-group">
+        <label for="activeShowShow">Активирован</label>
+        <input type="text" class="form-control" id="activeShow" disabled value="<?php if ($client['active']) echo 'Да';
+        else echo 'Нет'; ?>">
+    </div>
+    <div class="form-group">
+        <label for="clubShow">Членство в клубе</label>
+        <input type="text" class="form-control" id="clubShow" disabled value="<?php echo $club_state[$client['club_type']] ?>">
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="row mb-2">
+    <div class="col-4"><a class="btn btn-outline-success" href="clients/create">Создать пользователя</a></div>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Номер</th>
+        <th scope="col">Логин</th>
+        <th scope="col">Имя Фамилия</th>
+        <th scope="col">Email</th>
+        <th scope="col">Дата регистрации</th>
+        <th scope="col">Активирован</th>
+        <th scope="col">Состоит в клубе</th>
+        <th scope="col" colspan="3">Опции</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($clients as $client) : ?>
+        <tr>
+            <td><?php echo $client['id'] ?></td>
+            <td><?php echo $client['login'] ?></td>
+            <td><?php echo $client['name'] . ' ' . $client['surname'] ?></td>
+            <td><?php echo $client['email'] ?></td>
+            <td><?php echo $client['date_create'] ?></td>
+            <td><?php if ($client['active']) echo 'Да';
+                else echo 'Нет'; ?></td>
+            <td><?php echo $club_state[$client['club_type']] ?></td>
+            <td><a class="btn btn-outline-primary" href="clients/show/<?php echo $client['id'] ?>"><span
+                            class="material-icons">remove_red_eye</span></a></td>
+            <td><a class="btn btn-outline-info" href="clients/edit/<?php echo $client['id'] ?>"><span
+                            class="material-icons">edit</span></a></td>
+            <td><a class="btn btn-outline-danger" href="clients/delete/<?php echo $client['id'] ?>"><span
+                            class="material-icons">delete</span></a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php if (isset($pages)): ?>
+    <nav aria-label="" class="align-content-center">
+        <ul class="pagination">
+            <?php if ($current_page === 1): ?>
+                <li class="page-item disabled">
+                    <span class="page-link">Предыдущая</span>
+                </li>
+            <?php else: ?>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<?php echo $current_page - 1 ?>">Предыдущая</a>
+                </li>
+            <?php endif; ?>
+            <?php for ($i = 1; $i <= $pages; $i++): ?>
+                <?php if ($i === $current_page): ?>
+                    <li class="page-item active">
+                        <span class="page-link">
+                        <?php echo $i ?>
+                            <span class="sr-only">(current)</span>
+                        </span>
+                    </li>
+                <?php else : ?>
+                    <li class="page-item"><a class="page-link" href="?page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                <?php endif; ?>
+            <?php endfor; ?>
+            <?php if ($current_page === $pages): ?>
+                <li class="page-item disabled">
+                    <span class="page-link">Следующая</span>
+                </li>
+            <?php else: ?>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<?php echo $current_page + 1 ?>">Следущая</a>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </nav>
+<?php endif; ?>
+
+
+

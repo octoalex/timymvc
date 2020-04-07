@@ -1,0 +1,63 @@
+<?php if (isset($errors)) : ?>
+    <div class="alert alert-danger mt-3 alert-dismissible fade show" role="alert">
+        <?php foreach ($errors as $error): ?>
+            <?php echo $error ?>
+        <?php endforeach; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<?php endif; ?>
+<h1>Регистрация</h1>
+<form method="post" class="mt-3" enctype="multipart/form-data" id="registerForm">
+    <div class="form-group">
+        <label for="loginRegister">Логин</label>
+        <input type="text" class="form-control" name="login" id="loginRegister" aria-describedby="loginHelp"
+               placeholder="Введите логин" minlength="5" onblur="checkLogin()" onfocus="removeAlert('loginExist')"
+               required value="octoale">
+    </div>
+    <div class="form-group">
+        <label for="passwordRegister">Пароль</label>
+        <input type="password" class="form-control" name="password" id="passwordRegister" placeholder="Введите пароль"
+               minlength="6" required value="elfenlied1," onfocus="removeAlert('passwordIncorrect')">
+    </div>
+    <div class="form-group">
+        <label for="passwordRepeatRegister">Пароль еще раз</label>
+        <input type="password" class="form-control" id="passwordRepeatRegister" placeholder="Введите пароль повторно"
+               minlength="6" required value="elfenlied1," onblur="checkPassword()"
+               onfocus="removeAlert('passwordIncorrect')">
+    </div>
+    <div class="form-group">
+        <label for="emailRegister">Email</label>
+        <input type="email" class="form-control" name="email" id="emailRegister" aria-describedby="emailHelp"
+               placeholder="Введите email" required value="funyloony@gmail.co" onblur="checkEmail()"
+               onfocus="removeAlert('emailExist')">
+    </div>
+    <div class="form-group">
+        <label for="nameRegister">Имя пользователя</label>
+        <input type="text" class="form-control" name="name" id="nameRegister" aria-describedby="nameHelp"
+               placeholder="Введите имя" minlength="3" value="Alex">
+    </div>
+    <div class="form-group">
+        <label for="surnameRegister">Фамилия пользователя</label>
+        <input type="text" class="form-control" name="surname" id="surnameRegister" aria-describedby="loginHelp"
+               placeholder="Введите фамилию" minlength="3" value="Str">
+    </div>
+    <div class="form-group">
+        <label for="phoneRegister">Телефон</label>
+        <input type="text" class="form-control" name="phone" id="phoneRegister" aria-describedby="loginHelp"
+               placeholder="Введите телефон" minlength="5" required value="9996083283">
+    </div>
+    <div class="form-group">
+        <label for="photoRegister">Фотография</label>
+        <input type="file" class="form-control-file" name="photo" id="photoRegister" onchange="validateFileType(this)"
+               onfocus="removeAlert('fileError')"
+               accept="image/jpeg, image/png,image/gif">
+    </div>
+    <div class="form-group">
+        <label for="addressRegister">Адрес</label>
+        <input type="text" class="form-control" name="address" id="addressRegister"
+               placeholder="Введите адрес" value="Klykova">
+    </div>
+    <button type="submit" id="submitRegister" class="btn btn-primary">Зарегистрироваться</button>
+</form>
